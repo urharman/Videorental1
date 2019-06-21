@@ -18,15 +18,15 @@ namespace Videorental
         {
             InitializeComponent();
         }
-        //private SqlConnection connection = new SqlConnection();
+        private SqlConnection connection = new SqlConnection();
 
         //We need a connection to the Database
 
 
-      //  SqlConnection Con = new SqlConnection();
-      //  string connection_String = @"Data Source=DESKTOP-U551NOV\SQLEXPRESS;Initial Catalog=Movie;Integrated Security=True";
-       // Connection.Connection String = ConnectionString;
-      //  DataTable Add_movies = new DataTable();
+       SqlConnection Con = new SqlConnection();
+      string connection_String = @"Data Source=DESKTOP-U551NOV\SQLEXPRESS;Initial Catalog=Movie;Integrated Security=True";
+       //Connection.Connection String = ConnectionString;
+      DataTable Add_movies = new DataTable();
        
 
       //  private void btnUpdate_Click(object sender, EventArgs e)
@@ -124,9 +124,9 @@ reader["Rental_Cost"].ToString(), reader["Copies"].ToString(),reader["Plot"].ToS
             SqlConnection Con = new SqlConnection();
                 string connectionString = @"Data Source=DESKTOP-U551NOV\SQLEXPRESS;Initial Catalog=Movie;Integrated Security=True";
             Con.ConnectionString = connectionString;
-                using (SqlCommand newdata = new SqlCommand(NewEntry, Con))
-                {
-                
+            using (SqlCommand newdata = new SqlCommand(NewEntry, Con))
+            {
+
                 newdata.Parameters.AddWithValue("@Rating", TextRating.Text);
                 newdata.Parameters.AddWithValue("@Title", TextTitle.Text);
                 newdata.Parameters.AddWithValue("@Year", textYear.Text);
@@ -134,16 +134,17 @@ reader["Rental_Cost"].ToString(), reader["Copies"].ToString(),reader["Plot"].ToS
                 newdata.Parameters.AddWithValue("@Copies", textCopies.Text);
                 newdata.Parameters.AddWithValue("@Plot", textPlot.Text);
                 newdata.Parameters.AddWithValue("@Genre", textGenre.Text);
-                
+
                 Con.Open(); //open a connection to the database
                             //its a NONQuery as it doesn't return any data its only going up to the server
                 newdata.ExecuteNonQuery(); //Run the Query
                 Con.Close();
-                
+
                 MessageBox.Show("Data has been Inserted !! ");
+
+                //Run the LoadDatabase method we made earler to see the new data.
+                loadDatabase();
             }
-            //Run the LoadDatabase method we made earler to see the new data.
-            loadDatabase();
         }
 
         public void loadDatabase()
@@ -166,6 +167,8 @@ reader["Rental_Cost"].ToString(), reader["Copies"].ToString(),reader["Plot"].ToS
             Con.Open();
             DeleteData.ExecuteNonQuery();
             Con.Close();
+            //This message is show that Movie is Deleted
+            MessageBox.Show("Movie is Deleted from List");
             loadDatabase();
         }
 
@@ -196,6 +199,7 @@ reader["Rental_Cost"].ToString(), reader["Copies"].ToString(),reader["Plot"].ToS
                 //Run the Query
                 //a happy message box
                 MessageBox.Show("Data Has Been Updated Thankss");
+                loadDatabase();
             }
             //Run the LoadDatabase method we made earler to see the new data.
 

@@ -7,14 +7,14 @@ namespace Videorental
     partial class customers2
     {
         /// <summary>
-        /// Required designer variable.
+        /// Required designers variables.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be disposeds; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

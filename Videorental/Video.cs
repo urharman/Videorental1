@@ -47,19 +47,19 @@ namespace Videorental
         {
 
         }
-
+        // Customer Button atteched here axtention
         private void button1_Click(object sender, EventArgs e)
         {
             customers2 f2 = new customers2();
             f2.ShowDialog();
         }
-
+        //Movies Button atteched here axtention
         private void btnMovies_Click_1(object sender, EventArgs e)
         {
             movies1 f2 = new movies1();
             f2.ShowDialog();
         }
-
+        // Rented Button atteched here axtention
         private void btnRented_Click_1(object sender, EventArgs e)
         {
             Rented1 f2 = new Rented1();
